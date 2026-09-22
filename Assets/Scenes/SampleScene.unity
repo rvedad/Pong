@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 144197168}
   - component: {fileID: 144197167}
   - component: {fileID: 144197166}
+  - component: {fileID: 144197170}
   m_Layer: 0
   m_Name: PaddleRight
   m_TagString: Untagged
@@ -286,6 +287,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144197170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144197165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da08675bcc369a040bcd79dd2ad6e98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaddleController
+  speed: 8
+  upKey: 273
+  downKey: 274
+  boundY: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +696,7 @@ GameObject:
   - component: {fileID: 1534953950}
   - component: {fileID: 1534953949}
   - component: {fileID: 1534953948}
+  - component: {fileID: 1534953952}
   m_Layer: 0
   m_Name: PaddleLeft
   m_TagString: Untagged
@@ -834,6 +852,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1534953952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534953947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da08675bcc369a040bcd79dd2ad6e98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaddleController
+  speed: 8
+  upKey: 119
+  downKey: 115
+  boundY: 4
 --- !u!1 &1590026166
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,8 +880,9 @@ GameObject:
   - component: {fileID: 1590026169}
   - component: {fileID: 1590026168}
   - component: {fileID: 1590026167}
+  - component: {fileID: 1590026171}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -890,7 +925,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 51ba1caa4bd7eee49a04a69ba563d65f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -991,6 +1026,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1590026171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590026166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b421411d527eb049b052c718b8d4321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallController
+  speed: 5
 --- !u!1 &1901899922
 GameObject:
   m_ObjectHideFlags: 0
