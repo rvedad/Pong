@@ -12,7 +12,6 @@ public class PaddleController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float move = 0f;

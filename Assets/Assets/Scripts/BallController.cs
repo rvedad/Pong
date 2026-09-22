@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 10.0f;
+    public float resetDelay = 1f;
     private Rigidbody2D rb;
 
     void Start()
@@ -21,5 +22,12 @@ public class BallController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         rb.linearVelocity = rb.linearVelocity.normalized * speed;
+    }
+
+    public void ResetBall()
+    {
+        rb.linearVelocity = Vector2.zero;
+        rb.position = Vector2.zero;
+        Invoke("LaunchBall", resetDelay);
     }
 }
