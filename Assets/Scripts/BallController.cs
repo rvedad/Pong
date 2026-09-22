@@ -30,4 +30,10 @@ public class BallController : MonoBehaviour
         rb.position = Vector2.zero;
         Invoke("LaunchBall", resetDelay);
     }
+
+    public void StopBall()
+    {
+        rb.linearVelocity = Vector2.zero;
+        rb.position = Vector2.zero;
+    }
 }
