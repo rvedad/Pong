@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a95291a0f2921448480239c35bac4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoalController
-  player: 1
+  player: 2
 --- !u!1 &1021929351
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,7 +2402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a95291a0f2921448480239c35bac4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoalController
-  player: 2
+  player: 1
 --- !u!1 &1967890212
 GameObject:
   m_ObjectHideFlags: 0

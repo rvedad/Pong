@@ -51,13 +51,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<BallController>().ResetBall();
+           FindAnyObjectByType<BallController>().ResetBall();
         }
     }
 
     void WinGame()
     {
-        FindObjectOfType<BallController>().StopBall();
+        FindAnyObjectByType<BallController>().StopBall();
         string winner = player1Score >= winningScore ? "Player 1" : "Player 2";
         winText.text = winner + " wins!";
         winPanel.SetActive(true);
