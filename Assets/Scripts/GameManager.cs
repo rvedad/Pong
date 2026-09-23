@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public TextMeshProUGUI winText;
 
+    [Header("Audio")]
+    public AudioClip scoreSound;
+    private AudioSource audioSource;
+
     void Awake()
     {
         instance = this;
@@ -25,8 +29,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         winPanel.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
-    
+
     public void AddScore(int player)
     {
         if (player == 1)
@@ -42,14 +47,14 @@ public class GameManager : MonoBehaviour
 
         if (player1Score >= winningScore || player2Score >= winningScore)
         {
-           WinGame();
+            WinGame();
         }
         else
         {
             FindObjectOfType<BallController>().ResetBall();
         }
     }
-    
+
     void WinGame()
     {
         FindObjectOfType<BallController>().StopBall();
@@ -62,4 +67,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void PlayScoreSound()
+    {
+        audioSource.PlayOneShot(scoreSound);
+    }
 }
+

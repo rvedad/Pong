@@ -2,13 +2,24 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public float speed = 10.0f;
+    [Header("Ball Settings")]
+    public float initialSpeed = 10.0f;
+    private float speed = 0;
+    public float maxSpeed = 20.0f;
+    public float speedIncrease = 0.5f;
     public float resetDelay = 1f;
     private Rigidbody2D rb;
 
+    [Header("Audio")]
+    public AudioClip paddleHitSound;
+    public AudioClip wallHitSound;
+    private AudioSource audioSource;
+
     void Start()
     {
+        speed = initialSpeed;
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         LaunchBall();
     }
 
@@ -21,6 +32,16 @@ public class BallController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Paddle"))
+        {
+            speed = Mathf.Min(speed + speedIncrease, maxSpeed);
+            audioSource.PlayOneShot(paddleHitSound);
+        }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            audioSource.PlayOneShot(wallHitSound);
+        }
+
         rb.linearVelocity = rb.linearVelocity.normalized * speed;
     }
 
@@ -28,6 +49,7 @@ public class BallController : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         rb.position = Vector2.zero;
+        speed = initialSpeed;
         Invoke("LaunchBall", resetDelay);
     }
 

@@ -8,6 +8,7 @@ public class GoalController : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
+            GameManager.instance.PlayScoreSound();
             GameManager.instance.AddScore(player);
         }
     }
