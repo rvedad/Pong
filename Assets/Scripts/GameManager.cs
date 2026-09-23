@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,11 +39,13 @@ public class GameManager : MonoBehaviour
         {
             player1Score++;
             player1ScoreText.text = player1Score.ToString();
+            FlashScoreText(1);
         }
         else if (player == 2)
         {
             player2Score++;
             player2ScoreText.text = player2Score.ToString();
+            FlashScoreText(2);
         }
 
         if (player1Score >= winningScore || player2Score >= winningScore)
@@ -71,6 +74,30 @@ public class GameManager : MonoBehaviour
     public void PlayScoreSound()
     {
         audioSource.PlayOneShot(scoreSound);
+    }
+
+    public void FlashScoreText(int player)
+    {
+        if (player == 1)
+        {
+            StartCoroutine(FlashScoreRoutine(player1ScoreText));
+        }
+        else if (player == 2)
+        {
+            StartCoroutine(FlashScoreRoutine(player2ScoreText));
+        }
+    }
+
+    IEnumerator FlashScoreRoutine(TextMeshProUGUI scoreText)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Color originalColor = scoreText.color;
+            scoreText.color = Color.yellow;
+            yield return new WaitForSeconds(0.2f);
+            scoreText.color = originalColor;
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }
 
