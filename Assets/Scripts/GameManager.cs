@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     void WinGame()
     {
         FindAnyObjectByType<BallController>().StopBall();
+        FindAnyObjectByType<PauseMenu>().enabled = false;
         string winner = player1Score >= winningScore ? "Player 1" : "Player 2";
         winText.text = winner + " wins!";
         winPanel.SetActive(true);
@@ -103,6 +104,16 @@ public class GameManager : MonoBehaviour
             scoreText.color = originalColor;
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    public void QuitGame()
+    {
+        Time.timeScale = 1f;
+        Application.Quit();
+
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }
 
