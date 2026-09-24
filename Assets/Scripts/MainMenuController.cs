@@ -105,4 +105,13 @@ public class MainMenuController : MonoBehaviour
     {
         button.GetComponent<Image>().color = defaultColor;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
 }
