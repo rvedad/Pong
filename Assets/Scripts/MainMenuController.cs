@@ -93,7 +93,7 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.SetString("GameMode", gameMode);
         PlayerPrefs.SetString("PlayerSide", playerSide);
         PlayerPrefs.SetString("Difficulty", difficulty);
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Game");
     }
 
     void HighLightButton(Button button)

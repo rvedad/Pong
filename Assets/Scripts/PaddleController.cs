@@ -7,6 +7,8 @@ public class PaddleController : MonoBehaviour
     public KeyCode downKey;
     public float boundY = 4f;
     private Rigidbody2D rb;
+    private float move = 0f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -14,16 +16,15 @@ public class PaddleController : MonoBehaviour
 
     void Update()
     {
-        float move = 0f;
-        if (Input.GetKey(upKey))
-        {
-            move = speed;
-        }
-        else if (Input.GetKey(downKey))
-        {
-            move = -speed;
-        }
-        rb.linearVelocity = new Vector2(0, move);
-        rb.position = new Vector2(rb.position.x, Mathf.Clamp(rb.position.y, -boundY, boundY));
+        move = 0f;
+        if (Input.GetKey(upKey)) move = 1f;
+        if (Input.GetKey(downKey)) move = -1f;
+    }
+
+    void FixedUpdate()
+    {
+        rb.linearVelocity = new Vector2(0, move * speed);
+        float clampedY = Mathf.Clamp(rb.position.y, -boundY, boundY);
+        rb.position = new Vector2(rb.position.x, clampedY);
     }
 }
