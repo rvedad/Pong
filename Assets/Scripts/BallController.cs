@@ -14,12 +14,14 @@ public class BallController : MonoBehaviour
     public AudioClip paddleHitSound;
     public AudioClip wallHitSound;
     private AudioSource audioSource;
+    private TrailRenderer trail;
 
     void Start()
     {
         speed = initialSpeed;
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        trail = GetComponent<TrailRenderer>();
         LaunchBall();
     }
 
@@ -47,15 +49,23 @@ public class BallController : MonoBehaviour
 
     public void ResetBall()
     {
+        trail.enabled = false;
         rb.linearVelocity = Vector2.zero;
         rb.position = Vector2.zero;
         speed = initialSpeed;
-        Invoke("LaunchBall", resetDelay);
+        Invoke("EnableTrailAndLaunchBall", resetDelay);
     }
 
     public void StopBall()
     {
         rb.linearVelocity = Vector2.zero;
         rb.position = Vector2.zero;
+        trail.enabled = false;
+    }
+
+    void EnableTrailAndLaunchBall()
+    {
+        trail.enabled = true;
+        LaunchBall();
     }
 }
