@@ -71,6 +71,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void BackToMainMenu()
+    {
+       SceneManager.LoadScene(0);
+    }
+
     public void PlayScoreSound()
     {
         audioSource.PlayOneShot(scoreSound);
